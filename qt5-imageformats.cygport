@@ -3,7 +3,7 @@ inherit qt5-qmake
 NAME="qt5-imageformats"
 VERSION=5.1.0
 RELEASE=1
-CATEGORY="Libs"
+CATEGORY="X11"
 SUMMARY="Qt C++ application framework (additional image format loaders)"
 DESCRIPTION="Qt is a cross-platform application framework for desktop and
 embedded development. Qt enables programmers to create advanced GUI
@@ -14,9 +14,19 @@ HOMEPAGE="http://qt-project.org/"
 SRC_URI="http://download.qt-project.org/official_releases/qt/${VERSION%.*}/${VERSION}/submodules/qtimageformats-opensource-src-${VERSION}.tar.xz"
 SRC_DIR="qtimageformats-opensource-src-${VERSION}"
 
+PKG_NAMES="${NAME} ${NAME}-doc"
+qt5_imageformats_CONTENTS="usr/lib/qt5/plugins/imageformats/"
+qt5_imageformats_doc_CATEGORY="Doc"
+qt5_imageformats_doc_CONTENTS="usr/share/qt5/doc/qtimageformats*"
+
+src_compile() {
+	cd ${B}
+	cygqmake5 ${S}
+	cygmake
+	cygmake docs
+}
+
 src_install() {
 	cd ${B}
-	qt5_qmake_install
-
-#	rm ${D}/usr/lib/*.la
+	qt5_qmake_install install_docs
 }
