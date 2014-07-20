@@ -1,7 +1,7 @@
 inherit qt5-qmake
 
 NAME="qt5-imageformats"
-VERSION=5.1.0
+VERSION=5.2.1
 RELEASE=1
 CATEGORY="X11"
 SUMMARY="Qt C++ application framework (additional image format loaders)"
@@ -15,7 +15,7 @@ SRC_URI="http://download.qt-project.org/official_releases/qt/${VERSION%.*}/${VER
 SRC_DIR="qtimageformats-opensource-src-${VERSION}"
 
 PKG_NAMES="${NAME} ${NAME}-doc"
-qt5_imageformats_CONTENTS="usr/lib/qt5/plugins/imageformats/"
+qt5_imageformats_CONTENTS="usr/lib/cmake/Qt5Gui/ usr/lib/qt5/plugins/imageformats/ usr/share/doc/"
 qt5_imageformats_doc_CATEGORY="Doc"
 qt5_imageformats_doc_CONTENTS="usr/share/qt5/doc/qtimageformats*"
 
